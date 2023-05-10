@@ -1,0 +1,26 @@
+{
+  "name": "ai-tools-finder-service",
+  "version": "1.0.0",
+  "description": "One stop to find all ai tools info",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ai_tools-finder"
+  },
+  "keywords": [
+    "ai"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
