@@ -52,4 +52,34 @@ const getAiToolById = async (req, res, next) => {
 
 };
 
-module.exports = { getAllAITools, getAiToolById };
+const getAiToolByNameAndTags = async (req,res,next) => {
+  console.log("getAiTool By Name or Tags called");
+  const search_name = req.query.name;
+
+  if (aiToolsData.length === 0) {
+    return res.status(404).json({ message: "AI tool not found" });
+  }
+
+  function callBack(element) {
+    if(search_name !== undefined){
+      var name_check = element.name.toLowerCase() === search_name.toLowerCase();
+      var tags_check = false;
+      element.tags.map((tag)=>{
+      if(tag.toLowerCase() === search_name.toLowerCase()){
+        tags_check = true;
+      }
+      })
+    }
+    return name_check|| tags_check;
+  }
+
+  const response = await aiToolsData.filter(callBack);
+  if (response !== undefined) {
+    res.status(200).json(response)
+  } else {
+    res.send("Error:  Name or tag does not exist")
+  }
+
+}
+
+module.exports = { getAllAITools, getAiToolById ,getAiToolByNameAndTags};

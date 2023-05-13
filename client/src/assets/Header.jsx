@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import useDarkSide from "./UseDarkSide";
+import PopUp from './Popup'; 
 
 export default function Header() {
 
@@ -8,6 +9,7 @@ export default function Header() {
 	const [darkSide, setDarkSide] = useState(
 		colorTheme === "light" ? true : false
 	);
+    const [openPopUp,setOpenPopUp] = useState(false)
 
 	const toggleDarkMode = (checked) => {
 		setTheme(colorTheme);
@@ -27,9 +29,9 @@ export default function Header() {
                             <button
                                 className="text-gray-800 dark:text-white hover:bg-gray-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-1 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log
                                 in</button>
-                            <a href="/add"
+                            <div 
                                 className="text-gray-800 dark:text-white bg-primary-700 hover:bg-gray-300 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Add
-                                your AI</a>
+                                your AI</div>
                             <a href="/discord"
                                 className="text-gray-800 dark:text-white bg-primary-700 hover:bg-gray-300 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Discord
                                 Community</a>
@@ -46,6 +48,10 @@ export default function Header() {
                     </div>
                 </nav>
             </header>
+            {openPopUp &&
+                <div className= "overlay">
+            <PopUp setOpenPopUp={setOpenPopUp}/></div>
+            }
         </>
     );
 }

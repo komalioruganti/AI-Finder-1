@@ -2,10 +2,9 @@ import TilesDetails from "./TilesDetailsTop12"
 
 export default function TilesNewlyAdded() {
 
-    const newArray = TilesDetails.map(item => {
+    const newArray = TilesDetails.map((item,index) => {
         return (
-            <>
-                <div
+                <div key ={index}
                     className="flex-initial w-60 h-full border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-[#171717] dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5 mr-7" style={{flex:"0 0 auto"}}>
                     <img src={item.imgSrc} alt="Logo"
                         className="h-32 w-32 mx-auto my-1 mt-5 rounded-md" />
@@ -39,7 +38,7 @@ export default function TilesNewlyAdded() {
                         </a>
                     </div>
                 </div>
-            </>
+           
         )
     });
 
