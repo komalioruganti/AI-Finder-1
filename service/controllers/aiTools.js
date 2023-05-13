@@ -59,21 +59,8 @@ const getAiToolByNameAndTags = async (req,res,next) => {
   if (aiToolsData.length === 0) {
     return res.status(404).json({ message: "AI tool not found" });
   }
-
-  function callBack(element) {
-    if(search_name !== undefined){
-      var name_check = element.name.toLowerCase() === search_name.toLowerCase();
-      var tags_check = false;
-      element.tags.map((tag)=>{
-      if(tag.toLowerCase() === search_name.toLowerCase()){
-        tags_check = true;
-      }
-      })
-    }
-    return name_check|| tags_check;
-  }
-
-  const response = await aiToolsData.filter(callBack);
+  const regex = new RegExp(search_name, "i");
+  const response = await aiToolsData.filter((element) =>regex.test(element.name) || element.tags.some(tag => regex.test(tag)) );
   if (response !== undefined) {
     res.status(200).json(response)
   } else {
