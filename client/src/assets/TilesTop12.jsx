@@ -15,7 +15,6 @@ export default function TilesTop12() {
             .then((res) => res.json())
             .then(data => {
                 setAITools(data)
-
             })
     }
     const newArray = aiTools.map((item,index) => {
@@ -30,7 +29,7 @@ export default function TilesTop12() {
                         <p className="text-base font-light"><a href="/profile/OpenAI">{item.subHeading1}</a></p>
                         <p className="text-sm font-light">{item.subHeading2}</p>
                         <span className="text-lg dark:text-white inline-flex mb-1"></span>
-                        <a href={item.href}
+                        <a href={`${item.name.toLowerCase()}`}
                             className="text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">More
                             Infos</a>
                     </div>
