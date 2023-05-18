@@ -6,14 +6,19 @@ import { useState, useEffect } from 'react';
 
 export default function Body() {
 
+    useEffect(() => {
+        getAiTools()
+    }, [])
+
+    const [aiTools, setAITools] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const [filteredAITools, setFilteredAITools] = useState([])
 
     const SurpriseMeFunction = () => {
-        var random_num = Math.floor(Math.random() * allTools.length);
-        setSearchQuery(allTools[random_num].name)
+        var random_num = Math.floor(Math.random() * aiTools.length);
+        setSearchQuery(aiTools[random_num].name)
     }
-
+    
     const search = (e) => {
         e.preventDefault()
         fetch(`http://localhost:5000/api/getAiToolByNameAndTags/?name=` + searchQuery)
@@ -23,6 +28,15 @@ export default function Body() {
             })
     }
 
+    function getAiTools() {
+        fetch("http://localhost:5000/api/getAllAiTools")
+            .then((res) => res.json())
+            .then(data => {
+                setAITools(data)
+
+            })
+    }
+    
     return (
         <>
             <main className="w-full bg-white dark:bg-[#111111] min-w-full min-h-full max-h-full">
@@ -118,7 +132,7 @@ export default function Body() {
                             </h2>
                             <div className="w-full h-max">
                                 <div className="flex flex-wrap gap-x-5 gap-y-1">
-                                    <TilesTop12 />
+                                    <TilesTop12 aiTools={aiTools}/>
                                 </div>
                             </div>
 
