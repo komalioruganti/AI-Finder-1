@@ -1,6 +1,6 @@
 import TilesTop12 from "./TilesTop12"
 import TilesNewlyAdded from "./TilesNewlyAdded"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 export default function Body({aiTools}) {

@@ -1,6 +1,4 @@
-import allTools from "./getAllAiTools";
-
-export default function TilesTop12({ allTools }) {
+export default function TilesTop12({ aiTools }) {
 
     const newArray = aiTools.map((item, index) => {
         return (
