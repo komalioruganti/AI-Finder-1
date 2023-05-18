@@ -1,16 +1,10 @@
-import allTools from "./getAllAiTools";
 import TilesTop12 from "./TilesTop12"
 import TilesNewlyAdded from "./TilesNewlyAdded"
 import { useState, useEffect } from 'react';
 
 
-export default function Body() {
+export default function Body({aiTools}) {
 
-    useEffect(() => {
-        getAiTools()
-    }, [])
-
-    const [aiTools, setAITools] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const [filteredAITools, setFilteredAITools] = useState([])
 
@@ -25,15 +19,6 @@ export default function Body() {
             .then((res) => res.json())
             .then(data => {
                 setFilteredAITools(data)
-            })
-    }
-
-    function getAiTools() {
-        fetch("http://localhost:5000/api/getAllAiTools")
-            .then((res) => res.json())
-            .then(data => {
-                setAITools(data)
-
             })
     }
     

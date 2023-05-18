@@ -35,7 +35,7 @@ function App() {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Body />}></Route>
+          <Route path="/" element={<Body aiTools={aiTools}/>}></Route>
           {AIToolroutes}
         </Routes>
       </BrowserRouter>
