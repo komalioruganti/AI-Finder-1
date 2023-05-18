@@ -15,7 +15,7 @@ export default function Body({aiTools}) {
     
     const search = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:5000/api/getAiToolByNameAndTags/?name=` + searchQuery)
+        fetch(`https://ai-finder-api-p4jq.onrender.com/api/getAiToolByNameAndTags/?name=` + searchQuery)
             .then((res) => res.json())
             .then(data => {
                 setFilteredAITools(data)

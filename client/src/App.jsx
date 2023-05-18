@@ -15,7 +15,7 @@ function App() {
   const [aiTools, setAITools] = useState([])
 
   function getAiTools() {
-    fetch("http://localhost:5000/api/getAllAiTools")
+    fetch("https://ai-finder-api-p4jq.onrender.com/api/getAllAiTools")
       .then((res) => res.json())
       .then(data => {
         setAITools(data)
