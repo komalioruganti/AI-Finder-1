@@ -1,29 +1,19 @@
+import allTools from "./getAllAiTools";
 import TilesTop12 from "./TilesTop12"
 import TilesNewlyAdded from "./TilesNewlyAdded"
 import { useState, useEffect } from 'react';
 
-export default function Body() {
-    useEffect(() => {
-        getAiTools()
-    }, [])
 
-    const [aiTools, setAITools] = useState([])
+export default function Body() {
+
     const [searchQuery, setSearchQuery] = useState("")
     const [filteredAITools, setFilteredAITools] = useState([])
 
     const SurpriseMeFunction = () => {
-        var random_num = Math.floor(Math.random() * aiTools.length);
-        setSearchQuery(aiTools[random_num].name)
+        var random_num = Math.floor(Math.random() * allTools.length);
+        setSearchQuery(allTools[random_num].name)
     }
 
-    function getAiTools() {
-        fetch("http://localhost:5000/api/getAllAiTools")
-            .then((res) => res.json())
-            .then(data => {
-                setAITools(data)
-
-            })
-    }
     const search = (e) => {
         e.preventDefault()
         fetch(`http://localhost:5000/api/getAiToolByNameAndTags/?name=` + searchQuery)
@@ -32,7 +22,6 @@ export default function Body() {
                 setFilteredAITools(data)
             })
     }
-    
 
     return (
         <>
@@ -156,4 +145,3 @@ export default function Body() {
         </>
     )
 }
-

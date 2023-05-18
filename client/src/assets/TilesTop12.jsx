@@ -1,23 +1,9 @@
-// import TilesDetails from "./TilesDetailsTop12"
-// import { set } from 'mongoose';
-import { useState, useEffect } from 'react';
+import allTools from "./getAllAiTools";
 
 export default function TilesTop12() {
 
-    useEffect(() => {
-        getAiTools()
-    }, [])
 
-    const [aiTools, setAITools] = useState([])
-
-    function getAiTools() {
-        fetch("http://localhost:5000/api/getAllAiTools")
-            .then((res) => res.json())
-            .then(data => {
-                setAITools(data)
-            })
-    }
-    const newArray = aiTools.map((item,index) => {
+    const newArray = allTools.map((item,index) => {
         return (
             
                 <div key= {index}
