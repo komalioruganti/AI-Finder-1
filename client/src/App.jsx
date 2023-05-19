@@ -24,7 +24,7 @@ function App() {
 
   const AIToolroutes = aiTools.map((x, index) => {
     return(
-      <Route key={index} path={x.name.toLowerCase()} element={<MoreInfo id={x.id} name={x.name} description={x.description} tags={x.tags} website={x.website} />}>
+      <Route key={index} path={x.name.toLowerCase()} element={<MoreInfo id={x.id} name={x.name} description={x.description} tags={x.tags} website={x.website} imgSrc={x.imgSrc}/>}>
       </Route>
     )
   })
