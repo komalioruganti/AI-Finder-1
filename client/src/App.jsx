@@ -22,9 +22,9 @@ function App() {
       })
   }
 
-  const AIToolroutes = aiTools.map((x, index) => {
+  const AIToolroutes = aiTools.map((element, index) => {
     return(
-      <Route key={index} path={x.name.toLowerCase()} element={<MoreInfo id={x.id} name={x.name} description={x.description} tags={x.tags} website={x.website} imgSrc={x.imgSrc}/>}>
+      <Route key={index} path={element.name.toLowerCase()} element={<MoreInfo element = {element}/>}>
       </Route>
     )
   })
