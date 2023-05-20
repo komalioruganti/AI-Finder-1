@@ -29,7 +29,7 @@ export default function MoreInfo({element}) {
     return (
         <>
             {loading ? 
-            <Loader.Circles wrapperStyle={{
+            <Loader.ThreeCircles wrapperStyle={{
                 "display": "flex",
                 "justify-content": "center",
                 "align-items": "center",
