@@ -1,12 +1,24 @@
+import * as Loader from "react-loader-spinner";
+import { useState , useEffect} from "react";
+// import Spinner from "./Spinner"
 
 export default function MoreInfo({element}) {
 
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
+    }, [])
+    
+
     const renderTags = (tag) => {
-        return tag.map((x, index) => 
-                <div key={index} className="mx-1 mb-1 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-secondary text-primary rounded-full">    
-                    {x}
-                </div>
-            )
+        return tag.map((x, index) =>
+            <div key={index} className="mx-1 mb-1 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-secondary text-primary rounded-full">
+                {x}
+            </div>
+        )
     }
 
     const openInNewTab = (url) => {
@@ -16,7 +28,14 @@ export default function MoreInfo({element}) {
 
     return (
         <>
-            <main className="w-full bg-white dark:bg-[#111111] min-w-full min-h-full max-h-full pb-64">
+            {loading ? 
+            <Loader.Circles wrapperStyle={{
+                "display": "flex",
+                "justify-content": "center",
+                "align-items": "center",
+            }}/>
+            :
+            (<main className="w-full bg-white dark:bg-[#111111] min-w-full min-h-full max-h-full pb-64">
                 <div className="relative flex flex-col justify-center items-start w-full p-0 h-full overflow-y-hide">
                     <div className="toaster  svelte-jyff3d"></div>
                     <div id="content" className="relative md:mx-40 mx-10 mt-5">
@@ -52,7 +71,7 @@ export default function MoreInfo({element}) {
                                 <div id="tags" className="flex flex-wrap mt-2">
                                     {renderTags(element.tags)}
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div id="buttons" className="">
@@ -77,7 +96,8 @@ export default function MoreInfo({element}) {
                         </div>
                     </div>
                 </div>
-            </main>
+            </main>)
+            }
         </>
     )
 }
